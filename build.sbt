@@ -2,8 +2,12 @@ Nice.scalaProject
 
 name          := "datasets"
 organization  := "ohnosequences"
-description   := "datasets project"
+description   := ""
 
 bucketSuffix  := "era7.com"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.5" % Test
+libraryDependencies ++= Seq(
+  "ohnosequences" %% "cosas"            % "0.7.0-SNAPSHOT",
+  "ohnosequences" %% "aws-scala-tools"  % "0.13.2",
+  "org.scalatest" %% "scalatest"        % "2.2.5" % Test
+)
