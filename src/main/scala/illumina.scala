@@ -88,7 +88,7 @@ case object illumina {
     type DataType <: AnyReadsType { type EndType = pairedEndType }
   }
 
-  case class IlluminaPairedEndReads1Fastq[
+  class IlluminaPairedEndReads1Fastq[
     DtTyp <: AnyReadsType { type EndType = pairedEndType }
   ](
     val dataType: DtTyp,
@@ -96,14 +96,14 @@ case object illumina {
   )
   extends AnyIlluminaPairedEndReads1Fastq { type DataType = DtTyp }
 
-  case class IlluminaPairedEndReads2Fastq[
+  class IlluminaPairedEndReads2Fastq[
     DtTyp <: AnyReadsType { type EndType = pairedEndType }
   ](
     val dataType: DtTyp,
     val label: String
   ) extends AnyIlluminaPairedEndReads1Fastq { type DataType = DtTyp }
 
-  // TODO move it somewhere, use it etc.
+  // TODO if there's any use of this, it should go into some AnyDataType
   trait AnySequencingTechnology
   case object Illumina extends AnySequencingTechnology
 
