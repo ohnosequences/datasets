@@ -65,21 +65,11 @@ case object illumina {
   ](val l: Lngth, val is: InsrtSz)
     extends ReadsType(pairedEndType, l, is)
 
-  // samples
-  trait AnyIlluminaSample extends AnyData {
-
-    type DataType <: AnyReadsType
-    val dataType: DataType
-  }
-  class IlluminaSample[RT <: AnyReadsType](val label: String, val dataType: RT)
-  extends AnyIlluminaSample { type DataType = RT }
-
   trait AnyIlluminaSingleEndFastq extends AnyData {
 
     type DataType <: AnyReadsType { type EndType = singleEndType }
   }
 
-  // .raw.R1.fastq.gz
   class IlluminaSingleEndFastq[
     DtTyp <: AnyReadsType { type EndType = singleEndType }
   ](
@@ -113,19 +103,6 @@ case object illumina {
     val label: String
   ) extends AnyIlluminaPairedEndReads1Fastq { type DataType = DtTyp }
 
-
-  // implicit def getPairedEndSampleOps[RT <: AnyReadsType { type EndType = pairedEndType }](sample: IlluminaSample[RT]): PairedEndSampleOps[RT] = PairedEndSampleOps(sample)
-  //
-  // case class PairedEndSampleOps[RT <: AnyReadsType { type EndType = pairedEndType }](val sample: IlluminaSample[RT]) {
-  //
-  //   def reads1: IlluminaPairedEndReads1Fastq[RT] =
-  //     IlluminaPairedEndReads1Fastq(sample.readsType, s"${sample.label}.raw.R1.fastq.gz")
-  //
-  //   def reads2: IlluminaPairedEndReads2Fastq[RT] =
-  //     IlluminaPairedEndReads2Fastq(sample.readsType, s"${sample.label}.raw.R2.fastq.gz")
-  // }
-
-
   // TODO move it somewhere, use it etc.
   trait AnySequencingTechnology
   case object Illumina extends AnySequencingTechnology
@@ -148,5 +125,4 @@ case object illumina {
     val technology: Technology
     // TODO provider, whatever
   }
-
 }
