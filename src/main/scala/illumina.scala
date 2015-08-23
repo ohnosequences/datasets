@@ -97,7 +97,7 @@ case object illumina {
     )
     extends AnyPairedEnd1Fastq { type DataType = DtTyp }
 
-    class IlluminaPairedEndReads2Fastq[DtTyp <: AnyReadsType { type EndType = pairedEndType }](
+    class PairedEnd2Fastq[DtTyp <: AnyReadsType { type EndType = pairedEndType }](
       val dataType: DtTyp,
       val label: String
     )
