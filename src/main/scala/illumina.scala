@@ -65,43 +65,46 @@ case object illumina {
   ](val l: Lngth, val is: InsrtSz)
     extends ReadsType(pairedEndType, l, is)
 
-  trait AnyIlluminaSingleEndFastq extends AnyData {
 
-    type DataType <: AnyReadsType { type EndType = singleEndType }
+  /*
+    ### Illumina reads
+  */
+  case object reads {
+
+    trait AnySingleEndFastq extends AnyData {
+
+      type DataType <: AnyReadsType { type EndType = singleEndType }
+    }
+    class SingleEndFastq[DtTyp <: AnyReadsType { type EndType = singleEndType }](
+      val dataType: DtTyp,
+      val label: String
+    )
+    extends AnySingleEndFastq { type DataType = DtTyp }
+
+
+    trait AnyPairedEnd1Fastq extends AnyData {
+
+      type DataType <: AnyReadsType { type EndType = pairedEndType }
+    }
+    trait AnyPairedEnd2Fastq extends AnyData {
+
+      type DataType <: AnyReadsType { type EndType = pairedEndType }
+    }
+
+    class PairedEnd1Fastq[DtTyp <: AnyReadsType { type EndType = pairedEndType }](
+      val dataType: DtTyp,
+      val label: String
+    )
+    extends AnyPairedEnd1Fastq { type DataType = DtTyp }
+
+    class IlluminaPairedEndReads2Fastq[DtTyp <: AnyReadsType { type EndType = pairedEndType }](
+      val dataType: DtTyp,
+      val label: String
+    )
+    extends AnyPairedEnd2Fastq { type DataType = DtTyp }
+
   }
 
-  class IlluminaSingleEndFastq[
-    DtTyp <: AnyReadsType { type EndType = singleEndType }
-  ](
-    val dataType: DtTyp,
-    val label: String
-  )
-  extends AnyIlluminaSingleEndFastq { type DataType = DtTyp }
-
-  trait AnyIlluminaPairedEndReads1Fastq extends AnyData {
-
-    type DataType <: AnyReadsType { type EndType = pairedEndType }
-  }
-
-  trait AnyIlluminaPairedEndReads2Fastq extends AnyData {
-
-    type DataType <: AnyReadsType { type EndType = pairedEndType }
-  }
-
-  class IlluminaPairedEndReads1Fastq[
-    DtTyp <: AnyReadsType { type EndType = pairedEndType }
-  ](
-    val dataType: DtTyp,
-    val label: String
-  )
-  extends AnyIlluminaPairedEndReads1Fastq { type DataType = DtTyp }
-
-  class IlluminaPairedEndReads2Fastq[
-    DtTyp <: AnyReadsType { type EndType = pairedEndType }
-  ](
-    val dataType: DtTyp,
-    val label: String
-  ) extends AnyIlluminaPairedEndReads1Fastq { type DataType = DtTyp }
 
   // TODO if there's any use of this, it should go into some AnyDataType
   trait AnySequencingTechnology
