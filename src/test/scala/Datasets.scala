@@ -11,6 +11,7 @@ class IlluminaDataTests extends FunSuite {
   val readsType = illumina.PairedEnd(bp75, unknownInsertSize)
 
   object sample extends PairedEndReads(
+    // looks like I can create this inline here
     new reads.PairedEnd1Fastq(readsType, "reads1"),
     new reads.PairedEnd2Fastq(readsType, "reads2")
   )
