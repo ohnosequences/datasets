@@ -105,6 +105,18 @@ case object illumina {
 
   }
 
+  class PairedEndReads[
+    DtTyp <: AnyReadsType { type EndType = pairedEndType },
+    P1 <: reads.AnyPairedEnd1Fastq { type DataType = DtTyp },
+    P2 <: reads.AnyPairedEnd2Fastq { type DataType = DtTyp }
+  ](
+    val reads1: P1,
+    val reads2: P2
+  ){
+
+    type DataSet = P1 :^: P2 :^: DNil
+    val dataSet: DataSet = reads1 :^: reads2 :^: DNil
+  }
 
   // TODO if there's any use of this, it should go into some AnyDataType
   trait AnySequencingTechnology
