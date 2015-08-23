@@ -106,9 +106,8 @@ case object illumina {
   }
 
   class PairedEndReads[
-    DtTyp <: AnyReadsType { type EndType = pairedEndType },
-    P1 <: reads.AnyPairedEnd1Fastq { type DataType = DtTyp },
-    P2 <: reads.AnyPairedEnd2Fastq { type DataType = DtTyp }
+    P1 <: reads.AnyPairedEnd1Fastq,
+    P2 <: reads.AnyPairedEnd2Fastq { type DataType = P1#DataType }
   ](
     val reads1: P1,
     val reads2: P2
