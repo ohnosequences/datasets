@@ -42,6 +42,7 @@ case object dataSets {
   }
 
   // all this nil/cons usual boilerplate
+  type DNil = DNil.type
   case object DNil extends AnyDataSet {
 
     type DataSet = ∅
