@@ -22,4 +22,30 @@ class IlluminaDataTests extends FunSuite {
     (sample.reads1 atS3 ObjectAddress("hola", "caracola"))      :~:
     (sample.reads2 atS3 ObjectAddress("hola", "otra-caracola")) :~: ∅
   )
+
+  sealed trait sampleTag { lazy val tag = toString }
+  case object control extends sampleTag
+  case object happy   extends sampleTag
+  case object funny   extends sampleTag
+  // ...
+
+  class Sample[RT <:  AnyReadsType { type EndType = pairedEndType }, ST <: sampleTag](
+    val readsType: RT,
+    val st: ST
+  ) {
+
+    case object reads1 extends reads.PairedEnd1Fastq(readsType, s"{st.tag}/whatever1")
+    case object reads2 extends reads.PairedEnd2Fastq(readsType, s"{st.tag}/whatever2")
+  }
+
+  val controlReads = new Sample(readsType, control)
+
+  val controlReadsDataset = controlReads.reads1 :^: controlReads.reads2 :^: DNil
+
+  object locations extends S3Locations(controlReadsDataset)
+
+  val zz =locations := (
+    (controlReads.reads1 atS3 ObjectAddress("hola", "caracola"))      :~:
+    (controlReads.reads2 atS3 ObjectAddress("hola", "otra-caracola")) :~: ∅
+  )
 }
