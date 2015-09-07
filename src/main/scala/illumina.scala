@@ -4,6 +4,10 @@ import dataSets._
 
 case object illumina {
 
+  case object AnyReadsType {
+
+    type PairedEnd = AnyReadsType { type EndType = pairedEndType }
+  }
   trait AnyReadsType extends AnyDataType {
 
     type InsertSize <: AnyInsertSize
@@ -44,8 +48,8 @@ case object illumina {
   case object singleEndType extends AnyEndType; type singleEndType = singleEndType.type
   case object pairedEndType extends AnyEndType; type pairedEndType = pairedEndType.type
 
-  sealed trait AnyLength { val length: Int }
-  class Length(val length: Int) extends AnyLength
+  sealed trait AnyLength { val toInt: Int }
+  class Length(val toInt: Int) extends AnyLength
   case object bp300 extends Length(300)
   case object bp250 extends Length(250)
   case object bp150 extends Length(150)
@@ -81,10 +85,19 @@ case object illumina {
     )
     extends AnySingleEndFastq { type DataType = DtTyp }
 
+    case object AnyPairedEnd1Fastq {
 
+      type OfType[DT <: AnyReadsType { type EndType = pairedEndType }] =
+        AnyPairedEnd1Fastq { type DataType = DT }
+    }
     trait AnyPairedEnd1Fastq extends AnyData {
 
       type DataType <: AnyReadsType { type EndType = pairedEndType }
+    }
+    case object AnyPairedEnd2Fastq {
+
+      type OfType[DT <: AnyReadsType { type EndType = pairedEndType }] =
+        AnyPairedEnd2Fastq { type DataType = DT }
     }
     trait AnyPairedEnd2Fastq extends AnyData {
 
@@ -102,7 +115,6 @@ case object illumina {
       val label: String
     )
     extends AnyPairedEnd2Fastq { type DataType = DtTyp }
-
   }
 
   class PairedEndReads[
