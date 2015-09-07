@@ -4,11 +4,7 @@ import ohnosequences.cosas._, types._, properties._, typeSets._, records._
 
 case object dataSets {
 
-  /* ### Data types
-
-     Reads, statistics, annotations, etc.
-  */
-  trait AnyDataType extends AnyType
+  trait AnyDataType
 
   trait AnyData extends AnyType {
 
