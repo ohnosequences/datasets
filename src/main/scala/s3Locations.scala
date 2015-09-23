@@ -14,6 +14,6 @@ case object s3Locations {
   case class S3DataOps[D <: AnyData](val data: D) extends AnyVal {
 
     def inS3Folder(addr: S3Folder): D := S3DataLocation = data := S3DataLocation(addr)
-    def isS3Object(addr: S3Object): D := S3DataLocation = data := S3DataLocation(addr)
+    def inS3Object(addr: S3Object): D := S3DataLocation = data := S3DataLocation(addr)
   }
 }
