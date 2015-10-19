@@ -15,6 +15,15 @@ case object dataSets {
     type Raw = AnyDataLocation
   }
 
+  case object AnyData {
+
+    import fileLocations._
+    import java.io.File
+    implicit def genericParser[D <: AnyData](implicit d: D):
+          DenotationParser[D, FileDataLocation, File] =
+      new DenotationParser(d, d.label)({ f: File => Some(FileDataLocation(f)) })
+  }
+
   abstract class Data[DT <: AnyDataType](val dataType: DT, val label: String) extends AnyData {
 
     type DataType = DT

@@ -6,7 +6,7 @@ import java.io.File
 
 case object fileLocations {
 
-  case class FileDataLocation(val location: File)        extends DataLocation[File]
+  case class FileDataLocation(val location: File) extends DataLocation[File]
   class FileLocations[DS <: AnyDataSet](val dataSet: DS)
     extends DataSetLocations[FileDataLocation] { type DataSet = DS }
 
