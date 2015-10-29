@@ -13,6 +13,6 @@ case object s3Locations {
   implicit def s3DataOps[D <: AnyData](data: D): S3DataOps[D] = S3DataOps(data)
   case class S3DataOps[D <: AnyData](val data: D) extends AnyVal {
 
-    def inS3(addr: S3Object): D := S3DataLocation = data := S3DataLocation(addr)
+    def inS3(addr: AnyS3Address): D := S3DataLocation = data := S3DataLocation(addr)
   }
 }
