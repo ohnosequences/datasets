@@ -78,21 +78,4 @@ case object dataSets {
     def :^:[H <: AnyData](data: H)(implicit check: H ∉ DS#DataSet): (H :^: DS) = dataSets.:^:(data, dataSet)
   }
 
-
-  // this is something similar to a record of locations for the given data set
-  trait AnyDataSetLocations extends AnyType {
-
-    type DataSet <: AnyDataSet
-    val  dataSet: DataSet
-
-    type LocationType <: AnyDataLocation
-
-    type Raw = DataSet#LocationsAt[LocationType]
-
-    lazy val label: String = this.toString
-  }
-
-  // this fixes only the location type
-  abstract class DataSetLocations[LT <: AnyDataLocation]
-    extends AnyDataSetLocations { type LocationType = LT }
 }
