@@ -15,7 +15,7 @@ case object fileType {
 
     lazy val extension: String = toString
   }
-  
+
   case object fa    extends DefaultFileType
   case object txt   extends DefaultFileType
   case object gz    extends DefaultFileType
@@ -24,6 +24,8 @@ case object fileType {
   case object info  extends DefaultFileType
   case object gff   extends DefaultFileType
   case object csv   extends DefaultFileType
+  case object html  extends DefaultFileType
+  case object bt2   extends DefaultFileType // bowtie index files
 }
 
 trait AnyFileData extends AnyData {
