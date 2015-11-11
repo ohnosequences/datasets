@@ -37,6 +37,8 @@ case object dataSets {
     noDup: NoDuplicates[data#Types]
   ) extends RecordType[data](d)
 
+  type DataSet2[data <: AnyProductType { type Types <: AnyKList { type Bound <: AnyData } }] = RecordType[data]
+
   trait AnyDataLocation extends Any {
 
     type Location

@@ -14,8 +14,15 @@ class stupidDataTests extends FunSuite {
   case object unBuh extends Data(buh, "un buh")
   case object otroBuh extends Data(buh, "otro buh")
 
+  case object variosBuhsAlt extends RecordType(unBuh :×: otroBuh :×: unit)
+
+  val z = variosBuhsAlt :=
+    (unBuh := FileDataLocation(new File("."))) ::
+    (otroBuh := FileDataLocation(new File("."))) :: *[AnyDenotation { type Value <: FileDataLocation }]
 
   case object variosBuhs extends DataSet(unBuh :×: otroBuh :×: In[AnyData])
+  // this is just a record type
+  case object variosBuhs2 extends DataSet2(unBuh :×: otroBuh :×: In[AnyData])
   // case object variosBuhsMal extends DataSet(unBuh :×: otroBuh :×: In[AnyType])
 
   variosBuhs :=
