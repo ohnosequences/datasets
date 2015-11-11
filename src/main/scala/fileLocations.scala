@@ -6,7 +6,7 @@ import java.io.File
 
 case object fileLocations {
 
-  case class FileDataLocation(val location: File) extends DataLocation[File]
+  case class FileDataLocation(val location: File) extends AnyVal with DataLocation[File]
 
   implicit def fileDataOps[D <: AnyData](data: D): FileDataOps[D] = FileDataOps(data)
   case class FileDataOps[D <: AnyData](val data: D) extends AnyVal {
