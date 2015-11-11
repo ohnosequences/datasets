@@ -11,7 +11,6 @@ case object dataSets {
     type DataType <: AnyDataType
     val  dataType: DataType
 
-    // this acts here as a bound
     type Raw = AnyDataLocation
   }
 
