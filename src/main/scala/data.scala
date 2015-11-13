@@ -31,12 +31,3 @@ abstract class DataSet[
 ](val d: data)(implicit
   noDup: NoDuplicates[data#Types]
 ) extends RecordType[data](d)
-
-
-trait AnyDataLocation extends Any {
-
-  type Location
-  def  location: Location
-}
-
-trait DataLocation[L] extends Any with AnyDataLocation { type Location = L }
