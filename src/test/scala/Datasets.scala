@@ -2,7 +2,7 @@ package ohnosequences.datasets.test
 
 import org.scalatest.FunSuite
 
-import ohnosequences.datasets._, dataSets._, illumina._, s3Locations._, fileLocations._
+import ohnosequences.datasets._, illumina._
 import java.io.File
 import ohnosequences.awstools.s3._
 import ohnosequences.cosas._, types._, klists._, records._, fns._
@@ -14,21 +14,11 @@ class stupidDataTests extends FunSuite {
   case object unBuh extends Data(buh, "un buh")
   case object otroBuh extends Data(buh, "otro buh")
 
-  case object variosBuhsAlt extends RecordType(unBuh :×: otroBuh :×: unit)
-
-  val z = variosBuhsAlt :=
-    (unBuh := FileDataLocation(new File("."))) ::
-    (otroBuh := FileDataLocation(new File("."))) :: *[AnyDenotation { type Value <: FileDataLocation }]
-
   case object variosBuhs extends DataSet(unBuh :×: otroBuh :×: In[AnyData])
-  // this is just a record type
-  case object variosBuhs2 extends DataSet2(unBuh :×: otroBuh :×: In[AnyData])
-  // case object variosBuhsMal extends DataSet(unBuh :×: otroBuh :×: In[AnyType])
 
-  variosBuhs :=
+  val denotation = variosBuhs :=
     (unBuh := FileDataLocation(new File("."))) ::
     (otroBuh := FileDataLocation(new File("."))) :: *[AnyDenotation { type Value <: FileDataLocation }]
-
 }
 
 
