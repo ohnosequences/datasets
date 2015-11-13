@@ -1,5 +1,6 @@
 package ohnosequences.datasets
 
+// TODO should be a pkg
 case object illumina {
 
   trait AnyReadsType extends AnyDataType {
