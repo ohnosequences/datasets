@@ -2,7 +2,7 @@ package ohnosequences.datasets
 
 import dataSets._
 import ohnosequences.cosas.types._
-import java.io.File
+import better.files._
 
 case object fileLocations {
 
