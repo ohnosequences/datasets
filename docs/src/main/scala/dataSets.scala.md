@@ -19,7 +19,7 @@ case object dataSets {
   case object AnyData {
 
     import fileLocations._
-    import java.io.File
+    import better.files._
     implicit def genericParser[D <: AnyData](implicit d: D):
           DenotationParser[D, FileDataLocation, File] =
       new DenotationParser(d, d.label)({ f: File => Some(FileDataLocation(f)) })
