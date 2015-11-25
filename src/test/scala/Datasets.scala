@@ -14,7 +14,7 @@ class stupidDataTests extends FunSuite {
   case object unBuh extends Data(buh, "un buh")
   case object otroBuh extends Data(buh, "otro buh")
 
-  case object variosBuhs extends DataSet(unBuh :×: otroBuh :×: In[AnyData])
+  case object variosBuhs extends DataSet(unBuh :×: otroBuh :×: |[AnyData])
 
   val denotation = variosBuhs :=
     (unBuh := FileDataLocation(new File("."))) ::
