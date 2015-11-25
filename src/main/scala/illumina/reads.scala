@@ -71,9 +71,9 @@ case object reads {
 
   trait AnySingleEndFastq extends AnyData {
 
-    type DataType <: AnyReadsType { type EndType = singleEndType }
+    type DataType <: AnyReadsType { type EndType = SingleEndType }
   }
-  class SingleEndFastq[DtTyp <: AnyReadsType { type EndType = singleEndType }](
+  class SingleEndFastq[DtTyp <: AnyReadsType { type EndType = SingleEndType }](
     val dataType: DtTyp,
     val label: String
   )
@@ -82,20 +82,20 @@ case object reads {
 
   trait AnyPairedEnd1Fastq extends AnyData {
 
-    type DataType <: AnyReadsType { type EndType = pairedEndType }
+    type DataType <: AnyReadsType { type EndType = PairedEndType }
   }
   trait AnyPairedEnd2Fastq extends AnyData {
 
-    type DataType <: AnyReadsType { type EndType = pairedEndType }
+    type DataType <: AnyReadsType { type EndType = PairedEndType }
   }
 
-  class PairedEnd1Fastq[DtTyp <: AnyReadsType { type EndType = pairedEndType }](
+  class PairedEnd1Fastq[DtTyp <: AnyReadsType { type EndType = PairedEndType }](
     val dataType: DtTyp,
     val label: String
   )
   extends AnyPairedEnd1Fastq { type DataType = DtTyp }
 
-  class PairedEnd2Fastq[DtTyp <: AnyReadsType { type EndType = pairedEndType }](
+  class PairedEnd2Fastq[DtTyp <: AnyReadsType { type EndType = PairedEndType }](
     val dataType: DtTyp,
     val label: String
   )
