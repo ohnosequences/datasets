@@ -1,0 +1,1 @@
+FileLocation uses better-files File type instead of java.io.File.

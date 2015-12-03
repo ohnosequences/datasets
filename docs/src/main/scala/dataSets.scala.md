@@ -5,23 +5,24 @@ package ohnosequences.datasets
 import ohnosequences.cosas._, types._, properties._, typeSets._, records._
 
 case object dataSets {
-```
 
-### Data types
-
-Reads, statistics, annotations, etc.
-
-
-```scala
-  trait AnyDataType extends AnyType
+  trait AnyDataType
 
   trait AnyData extends AnyType {
 
     type DataType <: AnyDataType
     val  dataType: DataType
 
-    // this acts here as a bound
     type Raw = AnyDataLocation
+  }
+
+  case object AnyData {
+
+    import fileLocations._
+    import better.files._
+    implicit def genericParser[D <: AnyData](implicit d: D):
+          DenotationParser[D, FileDataLocation, File] =
+      new DenotationParser(d, d.label)({ f: File => Some(FileDataLocation(f)) })
   }
 
   abstract class Data[DT <: AnyDataType](val dataType: DT, val label: String) extends AnyData {
@@ -78,23 +79,6 @@ Reads, statistics, annotations, etc.
     def :^:[H <: AnyData](data: H)(implicit check: H ∉ DS#DataSet): (H :^: DS) = dataSets.:^:(data, dataSet)
   }
 
-
-  // this is something similar to a record of locations for the given data set
-  trait AnyDataSetLocations extends AnyType {
-
-    type DataSet <: AnyDataSet
-    val  dataSet: DataSet
-
-    type LocationType <: AnyDataLocation
-
-    type Raw = DataSet#LocationsAt[LocationType]
-
-    lazy val label: String = this.toString
-  }
-
-  // this fixes only the location type
-  abstract class DataSetLocations[LT <: AnyDataLocation]
-    extends AnyDataSetLocations { type LocationType = LT }
 }
 
 ```
@@ -102,8 +86,10 @@ Reads, statistics, annotations, etc.
 
 
 
-[test/scala/Datasets.scala]: ../../test/scala/Datasets.scala.md
-[main/scala/s3Locations.scala]: s3Locations.scala.md
 [main/scala/dataSets.scala]: dataSets.scala.md
+[main/scala/fileData.scala]: fileData.scala.md
 [main/scala/fileLocations.scala]: fileLocations.scala.md
 [main/scala/illumina.scala]: illumina.scala.md
+[main/scala/s3Locations.scala]: s3Locations.scala.md
+[test/scala/Datasets.scala]: ../../test/scala/Datasets.scala.md
+[test/scala/FileData.scala]: ../../test/scala/FileData.scala.md
