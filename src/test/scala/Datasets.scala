@@ -3,7 +3,7 @@ package ohnosequences.datasets.test
 import org.scalatest.FunSuite
 
 import ohnosequences.datasets._, illumina._
-import java.io.File
+import better.files._
 import ohnosequences.awstools.s3._
 import ohnosequences.cosas._, types._, klists._, records._, fns._
 
@@ -17,8 +17,8 @@ class stupidDataTests extends FunSuite {
   case object variosBuhs extends DataSet(unBuh :×: otroBuh :×: |[AnyData])
 
   val denotation = variosBuhs :=
-    (unBuh := FileDataLocation(new File("."))) ::
-    (otroBuh := FileDataLocation(new File("."))) :: *[AnyDenotation { type Value <: FileDataLocation }]
+    (unBuh := FileDataLocation(File("."))) ::
+    (otroBuh := FileDataLocation(File("."))) :: *[AnyDenotation { type Value <: FileDataLocation }]
 }
 
 

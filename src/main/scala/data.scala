@@ -1,6 +1,7 @@
 package ohnosequences.datasets
 
 import ohnosequences.cosas._, types._, fns._, klists._, records._
+import better.files._
 
 trait AnyDataType
 
@@ -15,7 +16,6 @@ trait AnyData extends AnyType {
 
 case object AnyData {
 
-  import java.io.File
   implicit def genericParser[D <: AnyData](implicit d: D):
         DenotationParser[D, FileDataLocation, File] =
     new DenotationParser(d, d.label)({ f: File => Some(FileDataLocation(f)) })

@@ -1,7 +1,7 @@
 package ohnosequences.datasets
 
 import ohnosequences.cosas._, types._
-import java.io.File
+import better.files._
 import ohnosequences.awstools.s3._
 
 sealed trait AnyDataLocation extends Any {
