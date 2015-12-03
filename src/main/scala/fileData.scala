@@ -1,7 +1,5 @@
 package ohnosequences.datasets
 
-import dataSets._
-
 trait AnyFileType extends AnyDataType {
 
   val extension: String
