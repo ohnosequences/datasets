@@ -58,10 +58,10 @@ class IlluminaDataTests extends FunSuite {
 
 
 
-[test/scala/Datasets.scala]: Datasets.scala.md
-[test/scala/FileData.scala]: FileData.scala.md
-[main/scala/s3Locations.scala]: ../../main/scala/s3Locations.scala.md
-[main/scala/fileData.scala]: ../../main/scala/fileData.scala.md
 [main/scala/dataSets.scala]: ../../main/scala/dataSets.scala.md
+[main/scala/fileData.scala]: ../../main/scala/fileData.scala.md
 [main/scala/fileLocations.scala]: ../../main/scala/fileLocations.scala.md
 [main/scala/illumina.scala]: ../../main/scala/illumina.scala.md
+[main/scala/s3Locations.scala]: ../../main/scala/s3Locations.scala.md
+[test/scala/Datasets.scala]: Datasets.scala.md
+[test/scala/FileData.scala]: FileData.scala.md
