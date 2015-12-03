@@ -2,6 +2,9 @@ package ohnosequences.datasets
 
 package object illumina {
 
-  type singleEndType = singleEndType.type
-  type pairedEndType = pairedEndType.type
+  type SingleEndType = singleEndType.type
+  val SingleEndType: SingleEndType = singleEndType
+  
+  type PairedEndType = pairedEndType.type
+  val PairedEndType: PairedEndType = pairedEndType
 }
