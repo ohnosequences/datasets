@@ -27,7 +27,7 @@ abstract class Data[DT <: AnyDataType](val dataType: DT, val label: String) exte
 }
 
 abstract class DataSet[
-  data <: AnyProductType { type TypesBound <: AnyData }
+  data <: AnyProductType { type Types <: AnyKList { type Bound <: AnyData } }
 ](val d: data)(implicit
   proof: noDuplicates isTrueOn data#Types
 ) extends RecordType[data](d)
