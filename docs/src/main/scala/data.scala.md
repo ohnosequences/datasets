@@ -1,3 +1,5 @@
+
+```scala
 package ohnosequences.datasets
 
 import ohnosequences.cosas._, types._, fns._, klists._, records._
@@ -31,3 +33,18 @@ abstract class DataSet[
 ](val d: data)(implicit
   proof: noDuplicates isTrueOn data#Types
 ) extends RecordType[data](d)
+
+```
+
+
+
+
+[test/scala/fileData.scala]: ../../test/scala/fileData.scala.md
+[test/scala/Datasets.scala]: ../../test/scala/Datasets.scala.md
+[main/scala/illumina/package.scala]: illumina/package.scala.md
+[main/scala/illumina/reads.scala]: illumina/reads.scala.md
+[main/scala/fileData.scala]: fileData.scala.md
+[main/scala/package.scala]: package.scala.md
+[main/scala/files/files.scala]: files/files.scala.md
+[main/scala/locations.scala]: locations.scala.md
+[main/scala/data.scala]: data.scala.md
