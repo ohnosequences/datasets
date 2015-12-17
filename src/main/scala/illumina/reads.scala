@@ -59,7 +59,14 @@ class SingleEndReads[
 ](val l: Lngth, val is: InsrtSz)(val label: String)
   extends ReadsData(singleEndType, l, is)
 
-class PairedEndReads[
+
+class PairedEndReads1[
+  InsrtSz <: AnyInsertSize,
+  Lngth <: AnyLength
+](val l: Lngth, val is: InsrtSz)(val label: String)
+  extends ReadsData(pairedEndType, l, is)
+
+class PairedEndReads2[
   InsrtSz <: AnyInsertSize,
   Lngth <: AnyLength
 ](val l: Lngth, val is: InsrtSz)(val label: String)
