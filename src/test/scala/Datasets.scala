@@ -9,23 +9,22 @@ import ohnosequences.cosas._, types._, klists._, records._, fns._
 
 class stupidDataTests extends FunSuite {
 
-  case object buh extends AnyDataType
-
-  case object unBuh extends Data(buh, "un buh")
-  case object otroBuh extends Data(buh, "otro buh")
+  case object unBuh extends Data("un buh")
+  case object otroBuh extends Data("otro buh")
 
   case object variosBuhs extends DataSet(unBuh :×: otroBuh :×: |[AnyData])
 
   val denotation = variosBuhs :=
-    (unBuh := FileDataLocation(File("."))) ::
-    (otroBuh := FileDataLocation(File("."))) :: *[AnyDenotation { type Value <: FileDataLocation }]
+    unBuh(File(".")) ::
+    otroBuh(File(".")) ::
+    Resources[FileResource]
 }
 
 
 
 class IlluminaDataTests extends FunSuite {
 
-  val readsType = illumina.PairedEnd(bp75, unknownInsertSize)
+  // val readsType = illumina.PairedEnd(bp75, unknownInsertSize)
 
   // object sample extends PairedEndReads(
   //   // looks like I can create this inline here
