@@ -2,11 +2,14 @@
 ```scala
 package ohnosequences
 
-import ohnosequences.cosas._, types._, records._
+import ohnosequences.cosas._, types._, records._, klists._
 
 package object datasets {
 
   type AnyDataSet = AnyRecordType { type Keys <: AnyProductType { type TypesBound <: AnyData } }
+
+  type Resources[R <: AnyDataResource] = *[AnyDenotation { type Value <: R }]
+  def  Resources[R <: AnyDataResource]: Resources[R] = *[AnyDenotation { type Value <: R }]
 }
 
 ```
@@ -14,12 +17,11 @@ package object datasets {
 
 
 
-[test/scala/fileData.scala]: ../../test/scala/fileData.scala.md
-[test/scala/Datasets.scala]: ../../test/scala/Datasets.scala.md
+[main/scala/data.scala]: data.scala.md
+[main/scala/fileData.scala]: fileData.scala.md
 [main/scala/illumina/package.scala]: illumina/package.scala.md
 [main/scala/illumina/reads.scala]: illumina/reads.scala.md
-[main/scala/fileData.scala]: fileData.scala.md
 [main/scala/package.scala]: package.scala.md
-[main/scala/files/files.scala]: files/files.scala.md
-[main/scala/locations.scala]: locations.scala.md
-[main/scala/data.scala]: data.scala.md
+[main/scala/resources.scala]: resources.scala.md
+[test/scala/Datasets.scala]: ../../test/scala/Datasets.scala.md
+[test/scala/fileData.scala]: ../../test/scala/fileData.scala.md

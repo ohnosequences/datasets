@@ -11,23 +11,22 @@ import ohnosequences.cosas._, types._, klists._, records._, fns._
 
 class stupidDataTests extends FunSuite {
 
-  case object buh extends AnyDataType
-
-  case object unBuh extends Data(buh, "un buh")
-  case object otroBuh extends Data(buh, "otro buh")
+  case object unBuh extends Data("un buh")
+  case object otroBuh extends Data("otro buh")
 
   case object variosBuhs extends DataSet(unBuh :×: otroBuh :×: |[AnyData])
 
   val denotation = variosBuhs :=
-    (unBuh := FileDataLocation(File("."))) ::
-    (otroBuh := FileDataLocation(File("."))) :: *[AnyDenotation { type Value <: FileDataLocation }]
+    unBuh(File(".")) ::
+    otroBuh(File(".")) ::
+    Resources[FileResource]
 }
 
 
 
 class IlluminaDataTests extends FunSuite {
 
-  val readsType = illumina.PairedEnd(bp75, unknownInsertSize)
+  // val readsType = illumina.PairedEnd(bp75, unknownInsertSize)
 
   // object sample extends PairedEndReads(
   //   // looks like I can create this inline here
@@ -74,12 +73,11 @@ class IlluminaDataTests extends FunSuite {
 
 
 
-[test/scala/fileData.scala]: fileData.scala.md
-[test/scala/Datasets.scala]: Datasets.scala.md
+[main/scala/data.scala]: ../../main/scala/data.scala.md
+[main/scala/fileData.scala]: ../../main/scala/fileData.scala.md
 [main/scala/illumina/package.scala]: ../../main/scala/illumina/package.scala.md
 [main/scala/illumina/reads.scala]: ../../main/scala/illumina/reads.scala.md
-[main/scala/fileData.scala]: ../../main/scala/fileData.scala.md
 [main/scala/package.scala]: ../../main/scala/package.scala.md
-[main/scala/files/files.scala]: ../../main/scala/files/files.scala.md
-[main/scala/locations.scala]: ../../main/scala/locations.scala.md
-[main/scala/data.scala]: ../../main/scala/data.scala.md
+[main/scala/resources.scala]: ../../main/scala/resources.scala.md
+[test/scala/Datasets.scala]: Datasets.scala.md
+[test/scala/fileData.scala]: fileData.scala.md
