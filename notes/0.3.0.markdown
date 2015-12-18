@@ -1,0 +1,4 @@
+* Removed DataType together with FileType; Simplified reads types hierarchy
+* Renamed location to resource. Now resources are either local or remote:
+    + Local ones are represented by files
+    + Remote ones are either S3 objects or (String-like) Messages
