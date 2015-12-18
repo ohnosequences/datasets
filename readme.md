@@ -15,3 +15,5 @@ This little Scala library provides convenient abstractions for working with data
     + Remote ones are either S3 objects (`S3Resource`) or (string-containing) messages (`MessageResource`)
 
 - `AnyDataSet` is basically just an alias for a [Record](https://github.com/ohnosequences/cosas/blob/master/docs/src/main/scala/cosas/records/recordTypes.scala.md) that consists of `AnyData` objects
+
+There are also some types related to the Illumina reads data (which will be probably separated at some point).
