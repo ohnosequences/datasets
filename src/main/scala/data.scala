@@ -29,7 +29,6 @@ case class DataOps[D <: AnyData](val data: D) extends AnyVal {
   def apply(msg: String):        D := MessageResource = data := MessageResource(msg)
 }
 
-
 abstract class DataSet[
   data <: AnyProductType { type Types <: AnyKList { type Bound <: AnyData } }
 ](val d: data)(implicit
