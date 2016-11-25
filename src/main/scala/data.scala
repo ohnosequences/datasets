@@ -2,7 +2,7 @@ package ohnosequences.datasets
 
 import ohnosequences.cosas._, types._, fns._, klists._, records._
 import ohnosequences.awstools.s3._
-import better.files._
+import java.io.File
 
 trait AnyData extends AnyType {
 
