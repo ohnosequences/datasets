@@ -1,8 +1,8 @@
 package ohnosequences.datasets
 
 import ohnosequences.cosas._, types._
-import better.files._
 import ohnosequences.awstools.s3._
+import java.io.File
 
 sealed trait AnyDataResource extends Any {
 
