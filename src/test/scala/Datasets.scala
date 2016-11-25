@@ -1,12 +1,10 @@
 package ohnosequences.datasets.test
 
 import org.scalatest.FunSuite
-
-import better.files._
 import ohnosequences.awstools.s3._
 import ohnosequences.cosas._, types._, klists._, records._, fns._
-
 import ohnosequences.datasets._
+import java.io.File
 
 class stupidDataTests extends FunSuite {
 
@@ -16,7 +14,7 @@ class stupidDataTests extends FunSuite {
   case object variosBuhs extends DataSet(unBuh :×: otroBuh :×: |[AnyData])
 
   val denotation = variosBuhs :=
-    unBuh(File(".")) ::
-    otroBuh(File(".")) ::
+    unBuh(new File(".")) ::
+    otroBuh(new File(".")) ::
     Resources[FileResource]
 }
