@@ -4,7 +4,7 @@ package ohnosequences.datasets
 
 import ohnosequences.cosas._, types._, fns._, klists._, records._
 import ohnosequences.awstools.s3._
-import better.files._
+import java.io.File
 
 trait AnyData extends AnyType {
 
@@ -34,7 +34,6 @@ case class DataOps[D <: AnyData](val data: D) extends AnyVal {
   def apply(msg: String):        D := MessageResource = data := MessageResource(msg)
 }
 
-
 abstract class DataSet[
   data <: AnyProductType { type Types <: AnyKList { type Bound <: AnyData } }
 ](val d: data)(implicit
@@ -48,8 +47,6 @@ abstract class DataSet[
 
 [main/scala/data.scala]: data.scala.md
 [main/scala/fileData.scala]: fileData.scala.md
-[main/scala/illumina/package.scala]: illumina/package.scala.md
-[main/scala/illumina/reads.scala]: illumina/reads.scala.md
 [main/scala/package.scala]: package.scala.md
 [main/scala/resources.scala]: resources.scala.md
 [test/scala/Datasets.scala]: ../../test/scala/Datasets.scala.md

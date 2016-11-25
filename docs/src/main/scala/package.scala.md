@@ -19,8 +19,6 @@ package object datasets {
 
 [main/scala/data.scala]: data.scala.md
 [main/scala/fileData.scala]: fileData.scala.md
-[main/scala/illumina/package.scala]: illumina/package.scala.md
-[main/scala/illumina/reads.scala]: illumina/reads.scala.md
 [main/scala/package.scala]: package.scala.md
 [main/scala/resources.scala]: resources.scala.md
 [test/scala/Datasets.scala]: ../../test/scala/Datasets.scala.md

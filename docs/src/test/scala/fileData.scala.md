@@ -18,8 +18,6 @@ class FileDataTests extends FunSuite {
 
 [main/scala/data.scala]: ../../main/scala/data.scala.md
 [main/scala/fileData.scala]: ../../main/scala/fileData.scala.md
-[main/scala/illumina/package.scala]: ../../main/scala/illumina/package.scala.md
-[main/scala/illumina/reads.scala]: ../../main/scala/illumina/reads.scala.md
 [main/scala/package.scala]: ../../main/scala/package.scala.md
 [main/scala/resources.scala]: ../../main/scala/resources.scala.md
 [test/scala/Datasets.scala]: Datasets.scala.md
