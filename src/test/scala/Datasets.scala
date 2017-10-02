@@ -1,8 +1,7 @@
 package ohnosequences.datasets.test
 
 import org.scalatest.FunSuite
-import ohnosequences.awstools.s3._
-import ohnosequences.cosas._, types._, klists._, records._, fns._
+import ohnosequences.cosas._, types._
 import ohnosequences.datasets._
 import java.io.File
 

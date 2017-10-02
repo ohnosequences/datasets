@@ -1,6 +1,5 @@
 package ohnosequences.datasets
 
-import ohnosequences.cosas._, types._
 import ohnosequences.awstools.s3._
 import java.io.File
 

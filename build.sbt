@@ -5,6 +5,7 @@ description   := ""
 bucketSuffix  := "era7.com"
 
 libraryDependencies ++= Seq(
-  "ohnosequences" %% "cosas"           % "0.8.0",
-  "ohnosequences" %% "aws-scala-tools" % "0.18.1"
+  "ohnosequences" %% "cosas"           % "0.9.0",
+  "ohnosequences" %% "aws-scala-tools" % "0.19.0",
+  "org.scalatest" %% "scalatest"       % "3.0.4" % Test
 )
